@@ -33,13 +33,14 @@ $conn=null;*/
 ?>
 
 
+
 <?php //Вариант с отправкой данных с формы в таблицу 
 $servername="localhost";
 $username="root";
 $password="root";
 $f=$_POST['task'];
 
-
+//В mysql создал базу данных test, таблица first и столбцы id и task
 
 try{
   
@@ -51,9 +52,16 @@ try{
         $query->execute($data);
         $result=true;
         echo "Запись добавлена";
+        
+
+    //Вывод из базы
+    $query=$conn->query('SELECT*FROM `first` ORDER BY `id` DESC');
+    while($row=$query->fetch(PDO::FETCH_OBJ)){
+       echo '<li><b>'.$row->task.'<b><button>Удалить</button></li>';
+    }
 }
 catch(PDOexception $e){
     echo $sql . $e->getMessage();
 }
-
+//header('Location: index.html');//После отправки данных с формы остаться на текущей странице.
 ?>
