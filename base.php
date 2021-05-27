@@ -1,19 +1,20 @@
 <?php
-$servername="localhost";
+/*$servername="localhost";
 $username="root";
 $password="root";
 $dBname="test" //Имя базы при применении PDO здесь эту переменную можно не писать.
 
-/*try{
+//Начало. Просто проверяем соединение.
+try{
     $conn=new PDO("mysql:host=$servername; dbname=test", $username, $password); // это для проверки связи
     echo "Connect successfully";
 }
 catch(PDOexception $e){
     echo "Connection failed: " . $e->getMessage();
     
-}*/
+}
 
-
+// Другой вариант это добавление записи поумолчанию которая в VALUES. Эти два варианта просто для проверки.
 try{
     $conn=new PDO("mysql:host=$servername; dbname=test", $username, $password);//этот блок для проеврки доьавления записи в таблицу 
     
@@ -28,5 +29,31 @@ catch(PDOexception $e){
     echo $sql . $e->getMessage();
 }
 
-$conn=null;
+$conn=null;*/
+?>
+
+
+<?php //Вариант с отправкой данных с формы в таблицу 
+$servername="localhost";
+$username="root";
+$password="root";
+$f=$_POST['task'];
+
+
+
+try{
+  
+    $conn=new PDO("mysql:host=$servername; dbname=test", $username, $password);
+    
+    $conn->exec("set names utf8"); //устанавливаем кодировку.
+    $data=array('task'=>$f);
+        $query=$conn->prepare("INSERT INTO first(task) values(:task)");//Здесь так понимаю :task это имя поля формы которая в переменной в начале кода.
+        $query->execute($data);
+        $result=true;
+        echo "Запись добавлена";
+}
+catch(PDOexception $e){
+    echo $sql . $e->getMessage();
+}
+
 ?>
