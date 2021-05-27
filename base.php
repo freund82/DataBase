@@ -16,7 +16,7 @@ catch(PDOexception $e){
 
 try{
     $conn=new PDO("mysql:host=$servername; dbname=test", $username, $password);//этот блок для проеврки доьавления записи в таблицу 
-    echo "Connect successfully";
+    
     
     $sql="INSERT INTO first(task)
 VALUES('Новое задание')";// именно эта запись будет добавлена в таблицу. Здесь first Это название таблицы а task имя колонки таблицы. id колонку не прописываем так как это счетчик.
