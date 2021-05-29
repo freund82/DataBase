@@ -7,7 +7,7 @@ var i=document.querySelector("#ts");
 // Для отправки используем функцию Task()
 async function Task(){
     var send=await fetch("http://localhost:81/base.php",{
-      method: 'POST',
+      method: 'POST',//когда отправляем данные с формы используем эти параметры method и body
       body: new FormData(f)
     });
     var answer=await send.text();
@@ -26,4 +26,6 @@ f.addEventListener("submit", function(e){
     e.preventDefault();
     Task();
 });
+
+
 

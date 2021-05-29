@@ -57,7 +57,7 @@ try{
     //Вывод из базы
     $query=$conn->query('SELECT*FROM `first` ORDER BY `id` DESC');
     while($row=$query->fetch(PDO::FETCH_OBJ)){
-       echo '<li><b>'.$row->task.'<b><button>Удалить</button></li>';
+       echo '<li'." ".'id='.$row->id.'><b>'.$row->task.'<b><button>Удалить</button></li>';
        
     }
 }
