@@ -51,17 +51,18 @@ try{
         $query=$conn->prepare("INSERT INTO first(task) values(:task)");//Здесь так понимаю :task это имя поля формы которая в переменной в начале кода.
         $query->execute($data);
         $result=true;
-        echo "Запись добавлена";
+        /*echo "Запись добавлена";*/
         
 
     //Вывод из базы
     $query=$conn->query('SELECT*FROM `first` ORDER BY `id` DESC');
     while($row=$query->fetch(PDO::FETCH_OBJ)){
        echo '<li><b>'.$row->task.'<b><button>Удалить</button></li>';
+       
     }
 }
 catch(PDOexception $e){
     echo $sql . $e->getMessage();
 }
-//header('Location: index.html');//После отправки данных с формы остаться на текущей странице.
+//header('Location: http://localhost:81/index.html'); После отправки данных с формы остаться на текущей странице.
 ?>
