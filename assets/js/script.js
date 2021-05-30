@@ -22,34 +22,31 @@ async function Vygruzka(){
 }
 Vygruzka();
 
-/*async function Del(){
-    var send=await fetch("http://localhost:81/delete.php")
-    var answer=await send.text();
-    var d =[...document.querySelector("#new").children];
-    d.forEach(function(child){
+
+async function Del(){//Для удаления записей
+   await Vygruzka();
+    var listId =[...document.querySelector("#new").children];
+    
+    listId.forEach(function(child){
         child.addEventListener("click", ()=>{
-            console.log(child.id);
+            if(confirm("Удалить?")){
+                /*window.location.reload();*/
+                var request=`http://localhost:81/delete.php?id=${child.id}`;
+                fetch(request);
+                window.location.reload();
+            }
+           
         });
+      
     });
 }
-Del();*/
+Del();
 
-f.addEventListener("submit", function(e){
+
+
+f.addEventListener("submit", function(e){//Здесь кнопка для добавления задания. По нажатию кнопки стартует функция Task
     e.preventDefault();
     Task();
+    window.location.reload();
 });
 
-
-
-
-/*d.addEventListener("click", ()=>{
-    alert(d);
-});*/
-
-/*//перебираем все найденные элементы и вешаем на них события
-[].forEach.call( a, function(el) {
-    //вешаем событие
-    el.onclick = function(e) {
-        //производим действия
-    }
-});*/

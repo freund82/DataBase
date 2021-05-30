@@ -57,8 +57,8 @@ try{
     //Вывод из базы
     $query=$conn->query('SELECT*FROM `first` ORDER BY `id` DESC');
     while($row=$query->fetch(PDO::FETCH_OBJ)){
-       /*echo '<li'." ".'id='.$row->id.'><b>'.$row->task.'<b><button>Удалить</button></li>'; //Так можно добавлять id элементу li*/
-       echo '<li><b>'.$row->task.'</b><a href="/delete.php?id='.$row->id.'"><button>Удалить</button></a></li>';
+       echo '<li'." ".'id='.$row->id.'><b>'.$row->task.'<b><i class="fas fa-times"></i></li>'; //Так можно добавлять id элементу li
+       /*echo '<li><b>'.$row->task.'</b><a href="/delete.php?id='.$row->id.'"><button>Удалить</button></a></li>';*/ //Можно прямо в этом коде отправлять id в delete.php но я сделал через js
     }
 }
 catch(PDOexception $e){

@@ -1,0 +1,25 @@
+body{
+    margin:0;
+}
+
+.fas{
+    color:red;
+    margin-left:10px;
+    position:absolute;
+    top:50%;
+    right:10px;
+    z-index:1000;
+    transform: translateY(-50%);
+}
+ul{
+    width:300px;
+    list-style-type: none;
+    line-height: 2;
+}
+li{
+    border:2px solid grey;
+    border-radius:10px;
+    margin-bottom:5px;
+    padding-right:16px;
+    position: relative;
+}
