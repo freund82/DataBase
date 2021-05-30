@@ -16,11 +16,23 @@ async function Task(){
 }
 //Чтобы при загрузке страницы подгружались дела из базы используем функцию Vygruzka()
 async function Vygruzka(){
-    var send=await fetch("http://localhost:81/base.php")
+    var send=await fetch("http://localhost:81/base.php");
     var answer=await send.text();
     n.innerHTML=answer;
 }
 Vygruzka();
+
+/*async function Del(){
+    var send=await fetch("http://localhost:81/delete.php")
+    var answer=await send.text();
+    var d =[...document.querySelector("#new").children];
+    d.forEach(function(child){
+        child.addEventListener("click", ()=>{
+            console.log(child.id);
+        });
+    });
+}
+Del();*/
 
 f.addEventListener("submit", function(e){
     e.preventDefault();
@@ -29,3 +41,15 @@ f.addEventListener("submit", function(e){
 
 
 
+
+/*d.addEventListener("click", ()=>{
+    alert(d);
+});*/
+
+/*//перебираем все найденные элементы и вешаем на них события
+[].forEach.call( a, function(el) {
+    //вешаем событие
+    el.onclick = function(e) {
+        //производим действия
+    }
+});*/
